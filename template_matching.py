@@ -14,9 +14,7 @@ img_calc = np.zeros((h_org - h_trg + 1, w_org - w_trg + 1))
 
 for y in range(0, h_org - h_trg + 1):
     for x in range(0, w_org - w_trg + 1):
-        for yt in range(0, h_trg):
-            for xt in range(0, w_trg):
-                img_calc[y, x] += (img_target[yt, xt] - img_temp[y + yt, x + xt])**2
+        img_calc[y, x] = ((img_target[0: h_trg, 0: w_trg] - img_temp[y: y + h_trg, x:x + w_trg])**2).sum()
 
 img_calc = img_calc / img_calc.max()
 locations = np.where(img_calc <= threshold)
