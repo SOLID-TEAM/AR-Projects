@@ -14,7 +14,7 @@ input_threshold = 0.1
 
 img_org = cv2.imread('img2.png', 1)
 img_temp = cv2.imread('img2.png', 0) / 255.0
-img_target = cv2.imread('t1-img2.png', 0) / 255.0
+img_target = cv2.imread('t2-img2.png', 0) / 255.0
 
 #cv2.resize()
 
@@ -39,11 +39,13 @@ cv2.imshow('Result', img_org)
 cv2.imshow('matching map', img_calc)
 cv2.imshow('Target image', img_target)
 
-print(len(locations))
-
 imgFound = np.zeros((40,320,3), np.uint8)
 font = cv2.FONT_HERSHEY_SIMPLEX
-if (len(locations) > 0):
+a = np.array(locations)
+
+print(a.size)
+
+if (a.size !=0):
     cv2.putText(imgFound,'TARGET FOUND', (5,30), font, 1, (0,255,0),2)
 else:
     cv2.putText(imgFound,'TARGET NOT FOUND', (5,30), font, 1, (0,255,0),2)
