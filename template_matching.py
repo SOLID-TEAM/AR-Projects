@@ -14,11 +14,12 @@ input_threshold = 0.1
 
 img_org = cv2.imread('img2.png', 1)
 img_temp = cv2.imread('img2.png', 0) / 255.0
-img_target = cv2.imread('t2-img2.png', 0) / 255.0
-
-#cv2.resize()
+img_target = cv2.imread('t1-img2.png', 0) / 255.0
 
 threshold = float(input_threshold)
+
+img_temp = cv2.resize(img_temp, (int(img_org.shape[1] * 0.5), int(img_org.shape[0] * 0.5)),  interpolation=cv2.INTER_LINEAR)
+img_target = cv2.resize(img_target, (int(img_target.shape[1] *0.5), int(img_target.shape[0] * 0.5)), interpolation=cv2.INTER_LINEAR)
 
 h_org, w_org = img_temp.shape
 h_trg, w_trg = img_target.shape
@@ -33,7 +34,7 @@ img_calc = img_calc / img_calc.max()
 locations = np.where(img_calc <= threshold)
 
 for pt in zip(*locations[::-1]):
-    cv2.rectangle(img_org, pt, (pt[0] + h_trg, pt[1] + w_trg), (0, 255, 0), 1)
+    cv2.rectangle(img_org, (pt[0]*2 , pt[1]*2), (pt[0]*2 + h_trg*2, pt[1]*2 + w_trg*2), (0, 255, 0), 1)
 
 cv2.imshow('Result', img_org)
 cv2.imshow('matching map', img_calc)
