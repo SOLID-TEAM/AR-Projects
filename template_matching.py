@@ -40,7 +40,7 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 if locations.size != 0:
     cv2.putText(imgFound, str(int(locations.size / 2)) + ' TARGET/s FOUND', (5, 30), font, 1, (0, 255, 0), 2)
 else:
-    cv2.putText(imgFound, 'TARGET NOT FOUND', (5, 30), font, 1, (0, 255, 0), 2)
+    cv2.putText(imgFound, 'TARGET NOT FOUND', (5, 30), font, 1, (0, 255, 255), 2)
 
 cv2.imshow('Result', img_org)
 cv2.imshow('Matching template', img_calc)
