@@ -10,12 +10,6 @@ img_org = cv2.imread(img_path, 1)
 img_temp = cv2.imread(img_path, 0) / 255.0
 img_target = cv2.imread(img_trg_path, 0) / 255.0
 
-# img_org = cv2.imread('img2.png', 1)
-# img_temp = cv2.imread('img2.png', 0) / 255.0
-# img_target = cv2.imread('t1-img2.png', 0) / 255.0
-# threshold = 0.1
-# scale_multiplier = 1
-
 img_temp = cv2.resize(img_temp, (int(img_org.shape[1] * scale_multiplier), int(img_org.shape[0] * scale_multiplier)),  interpolation=cv2.INTER_NEAREST)
 img_target = cv2.resize(img_target, (int(img_target.shape[1] * scale_multiplier), int(img_target.shape[0] * scale_multiplier)), interpolation=cv2.INTER_NEAREST)
 
